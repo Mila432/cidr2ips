@@ -17,13 +17,12 @@ def hex2ip(hex_ip):
 def getmax(n2):
 	return 2**(32-int(n2))
 
-ips=set([])
 with open(sys.argv[1]) as f:
 	content = f.readlines()
 	content = [x.strip() for x in content]
 for cidr in content:
+	ips=set([])
 	max=getmax(cidr.split('/')[-1])
-
 	ip=ip2hex(cidr.split('/')[0])
 	while(len(ips)<max):
 		ips.add(ip+len(ips))
